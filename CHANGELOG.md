@@ -1,12 +1,39 @@
 # Changelog for formsflow.ai
 
 Mark  items as `Added`, `Changed`, `Fixed`, `Removed`, `Untested Features`, `Upcoming Features`, `Known Issues`
-## 5.0.1 - 2022-09-21
-**forms-flow-bpm**
-* Added new endpoints for process instance variables
+
+## 5.0.1 - 2022-10-10
+
+**forms-flow-web**
+
+`Added`
+
+* Added websocket support for multitenancy.
+
+`Modified`
+
+* Modified task page UI.
+* Modified alignment of wizard.
+
+`Removed`
+
+* Removed environment variable `REACT_APP_FORMIO_JWT_SECRET` form [config.sample.js](./forms-flow-web/public/config/config.sample.js).
 
 **forms-flow-api**
-* Return the role name as path for authorization
+
+`Added`
+
+* Return the role name as path for authorization.
+* Added formsflow API support to start application with data.
+
+**forms-flow-bpm**
+
+`Added`
+
+* Added new endpoints for process instance variables.
+* Added web socket support files to build.
+
+
 
 ## 5.0.0 - 2022-09-02
 
