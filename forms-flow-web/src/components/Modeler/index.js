@@ -239,13 +239,10 @@ export default React.memo(() => {
                   >
                     {t("Create New")}
                   </Button>
-
-                  <input
-                    id="inputWorkflow"
-                    type="file"
-                    accept=".bpmn, .dmn"
-                    onChange={(e) => handleChangeFile(e.target.files[0])}
-                  />
+                  <div className="upload">
+                 <input id="inputWorkflow" type="file" name="upload" accept=".bpmn, .dmn" onChange={(e) => handleChangeFile(e.target.files[0])}/>
+                 <span className="fileName">Choose File</span>
+                 </div>
                 </div>
               </div>
 
