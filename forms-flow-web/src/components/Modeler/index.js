@@ -241,7 +241,7 @@ export default React.memo(() => {
                   </Button>
                   <div className="upload">
                  <input id="inputWorkflow" type="file" name="upload" accept=".bpmn, .dmn" onChange={(e) => handleChangeFile(e.target.files[0])}/>
-                 <span className="fileName">Choose File</span>
+                 <label For="inputWorkflow">Choose File</label>
                  </div>
                 </div>
               </div>
