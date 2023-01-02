@@ -2,6 +2,14 @@
 
 Mark  items as `Added`, `Changed`, `Fixed`, `Removed`, `Untested Features`, `Upcoming Features`, `Known Issues`
 
+## 5.0.2 - 2022-12-07
+
+**forms-flow-web**
+
+`Fixed`
+
+* Frozen UI during form design.
+
 ## 5.0.1 - 2022-10-10
 
 **forms-flow-web**
@@ -57,6 +65,7 @@ Mark  items as `Added`, `Changed`, `Fixed`, `Removed`, `Untested Features`, `Upc
 * Added environment variable `EXPORT_PDF_ENABLED`for pdf service.
 * Added environment variable `PUBLIC_WORKFLOW_ENABLED` for enabling public workflow creation for multitenancy users.
 * Added environment variable `DOCUMENT_SERVICE_URL`for document service.
+* Added environment variable `OPENTELEMETRY_SERVICE`for opentelemetry service.
 
 
 
