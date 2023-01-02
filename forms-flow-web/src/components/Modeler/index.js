@@ -36,6 +36,7 @@ export default React.memo(() => {
   const [showModeler, setShowModeler] = useState(false);
   const [isBpmnModel, setIsBpmnModel] = useState(true);
   const [isNewDiagram, setIsNewDiagram] = useState(false);
+  const [fileName, setFileName] = useState('');
   const tenantKey = useSelector((state) => state.tenants?.tenantId);
 
   useEffect(() => {
@@ -113,6 +114,7 @@ export default React.memo(() => {
   };
 
   const handleChangeFile = (file) => {
+    setFileName(file.name);
     setShowModeler(false);
     setIsNewDiagram(true);
     let fileData = new FileReader();
@@ -240,9 +242,10 @@ export default React.memo(() => {
                     {t("Create New")}
                   </Button>
                   <div className="upload">
-                 <input id="inputWorkflow" type="file" name="upload" accept=".bpmn, .dmn" onChange={(e) => handleChangeFile(e.target.files[0])}/>
-                 <label For="inputWorkflow">Choose File</label>
+                 <input id="inputWorkflow" style={{display: "none"}} type="file" name="upload" accept=".bpmn, .dmn" onChange={(e) => handleChangeFile(e.target.files[0])}/>
+                 <label For="inputWorkflow">{t("Choose File")}</label>
                  </div>
+                 <label style={{padding: "4px"}} For="inputWorkflow">{fileName ? fileName : t("No file chosen")}</label>
                 </div>
               </div>
 
