@@ -70,6 +70,7 @@ const ServiceFlowTaskDetails = React.memo(() => {
   const tenantKey = useSelector((state) => state.tenants?.tenantId);
   const redirectUrl = MULTITENANCY_ENABLED ? `/tenant/${tenantKey}/` : "/";
 
+
   useEffect(() => {
     if (taskId) {
       dispatch(setSelectedTaskID(taskId));
