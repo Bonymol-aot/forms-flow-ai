@@ -133,6 +133,7 @@ const bpmTasks = (state = initialState, action) => {
     case ACTION_CONSTANTS.BPM_ERROR:
         return {
           ...state,
+          taskId: null,
           error: action.payload
         };
     default:
