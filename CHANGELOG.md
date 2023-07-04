@@ -56,6 +56,12 @@ Mark  items as `Added`, `Changed`, `Fixed`, `Removed`, `Untested Features`, `Upc
 `Generic Changes`
 
 * forms-flow-web is replaced by forms-flow-web-root-config as the deafult web application, for the setup refer [here](./forms-flow-web-root-config)
+* Added Micro-frontend feature to enable component level customisation  which includes
+     * forms-flow-admin (includes functionalities available for the user with admin privilages)
+     * forms-flow-navbar (trigger the routing, internationalization, and login/logout functionalities for all users)
+     * forms-flow-service (contains all the common functionalties used by micro front-ends like authentication service, storage APIs etc.)
+     * forms-flow-theme (contains the common style sheet shared by all micro-front-ends)<br>
+        Refer the [forms-flow-ai-micro-front-ends](https://github.com/AOT-Technologies/forms-flow-ai-micro-front-end) repository for further details.
 
 
 ## 5.1.1 - 2023-05-18
