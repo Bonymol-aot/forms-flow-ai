@@ -26,6 +26,7 @@ Mark  items as `Added`, `Changed`, `Fixed`, `Removed`, `Untested Features`, `Upc
 **forms-flow-api**
 
 * Added RBAC(Role Based Access Control) support in form listing for designer and client.
+* Added admin module for adding keycloak roles and user assignment.
 
 
 `Modified`
