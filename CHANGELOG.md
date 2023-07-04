@@ -33,6 +33,7 @@ Mark  items as `Added`, `Changed`, `Fixed`, `Removed`, `Untested Features`, `Upc
 **forms-flow-web**
 
 * Application history is modified to Application status and Request status.
+* Environment variable `ENABLE_APPLICATION_ACCESS_PERMISSION_CHECK` is replaced with `ENABLE_APPLICATION_ACCESS_PERMISSION_CHECK` to enable Role level permission.
 
 `forms-flow-api`
 
@@ -50,12 +51,6 @@ Mark  items as `Added`, `Changed`, `Fixed`, `Removed`, `Untested Features`, `Upc
 **forms-flow-bpm**
 
 * Task list variables not updated on re-submission by client issue fixed.
-
-`Removed`
-
-**forms-flow-web**
-
-* Removed environment variable `DOCUMENT_SERVICE_URL`.
 
 `Generic Changes`
 
