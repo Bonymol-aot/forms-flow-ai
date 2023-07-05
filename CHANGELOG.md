@@ -11,6 +11,7 @@ Mark  items as `Added`, `Changed`, `Fixed`, `Removed`, `Untested Features`, `Upc
 * Added `Form bundling` premium feature, refer [here](https://aot-technologies.github.io/forms-flow-ai-doc/#section-9) for more details.
 * Added RBAC(Role Based Access Control) support in form listing for designer and client.
 * Added admin module for adding keycloak roles and user assignment.
+* Added forms-flow-admin group for RBAC support.
 
 
 **forms-flow-web-root-config**
@@ -26,6 +27,8 @@ Mark  items as `Added`, `Changed`, `Fixed`, `Removed`, `Untested Features`, `Upc
 **forms-flow-api**
 
 * Added RBAC(Role Based Access Control) support in form listing for designer and client.
+* Added admin module for adding keycloak roles and user assignment.
+* Added forms-flow-admin group for RBAC support.
 
 
 `Modified`
@@ -33,6 +36,7 @@ Mark  items as `Added`, `Changed`, `Fixed`, `Removed`, `Untested Features`, `Upc
 **forms-flow-web**
 
 * Application history is modified to Application status and Request status.
+* Environment variable `ENABLE_APPLICATION_ACCESS_PERMISSION_CHECK` is replaced with `ENABLE_APPLICATION_ACCESS_PERMISSION_CHECK` to enable Role level permission.
 
 `forms-flow-api`
 
@@ -51,15 +55,15 @@ Mark  items as `Added`, `Changed`, `Fixed`, `Removed`, `Untested Features`, `Upc
 
 * Task list variables not updated on re-submission by client issue fixed.
 
-`Removed`
-
-**forms-flow-web**
-
-* Removed environment variable `DOCUMENT_SERVICE_URL`.
-
 `Generic Changes`
 
 * forms-flow-web is replaced by forms-flow-web-root-config as the deafult web application, for the setup refer [here](./forms-flow-web-root-config)
+* Added Micro-frontend feature to enable component level customisation  which includes
+     * forms-flow-admin (includes functionalities available for the user with admin privilages)
+     * forms-flow-navbar (trigger the routing, internationalization, and login/logout functionalities for all users)
+     * forms-flow-service (contains all the common functionalties used by micro front-ends like authentication service, storage APIs etc.)
+     * forms-flow-theme (contains the common style sheet shared by all micro-front-ends)<br>
+        Refer the [forms-flow-ai-micro-front-ends](https://github.com/AOT-Technologies/forms-flow-ai-micro-front-end) repository for further details.
 
 
 ## 5.1.1 - 2023-05-18
