@@ -280,4 +280,13 @@ export const RESOURCE_BUNDLES_BG = {
     "Resources":"Ресурси",
     "Duplicate form created successfully":"Дублираният формуляр е създаден успешно",
     "Revert": "Връщане",
+    "Overview": "Преглед",
+    "Designer Permission": "Разрешение на дизайнера",
+    "Accessible for all Designers": "Достъпно за всички дизайнери",
+    "Private(Only You)": "Лично (само ти)",
+    "Specific Designer Group": "Специфична дизайнерска група",
+    "Client Permission": "Клиентско разрешение",
+    "All Clients": "Всички клиенти",
+    "Specific Client Group": "Конкретна група клиенти",
+    "Give Designer Role Permissions": "Дайте разрешения за роля на дизайнер"
 };

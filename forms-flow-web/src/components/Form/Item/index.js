@@ -5,14 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   STAFF_REVIEWER,
   CLIENT,
-  STAFF_DESIGNER,
   BASE_ROUTE,
   MULTITENANCY_ENABLED,
 } from "../../../constants/constants";
 import View from "./View";
-import Edit from "./Edit";
 import Submission from "./Submission/index";
-import Preview from "./Preview";
 import { checkIsObjectId } from "../../../apiManager/services/formatterService";
 import { fetchFormByAlias } from "../../../apiManager/services/bpmFormServices";
 import {
@@ -40,13 +37,13 @@ const Item = React.memo(() => {
   const dispatch = useDispatch();
 
   const formAuthVerify = (formId,successCallBack)=>{
-    getClientList(formId).then(successCallBack).catch((err)=>{
-      const {response} = err;
-      dispatch(setApiCallError({message:response?.data?.message || 
-        response.statusText,status:response.status}));
-    }).finally(()=>{
-      dispatch(setFormAuthVerifyLoading(false));
-    });
+      getClientList(formId).then(successCallBack).catch((err)=>{
+        const {response} = err;
+        dispatch(setApiCallError({message:response?.data?.message || 
+          response.statusText,status:response.status}));
+      }).finally(()=>{
+        dispatch(setFormAuthVerifyLoading(false));
+      });
   };
   
   useEffect(() => {
@@ -58,8 +55,12 @@ const Item = React.memo(() => {
       dispatch(getForm("form", formId,(err,res)=>{
         if(err){
           dispatch(setFormAuthVerifyLoading(false));
-        }else{
-          formAuthVerify(res.parentFormId || res._id);
+        }else{          
+          if(!userRoles.includes(STAFF_REVIEWER) && userRoles.includes(CLIENT)){
+            formAuthVerify(res.parentFormId || res._id);
+          }else{
+            dispatch(setFormAuthVerifyLoading(false));
+          }
         }
       }));
     } else {
@@ -115,34 +116,15 @@ const Item = React.memo(() => {
       }
     />
   );
+
   /**
    * Protected route for form deletion
    */
-  const FormActionRoute = ({ component: Component, ...rest }) => (
-    <Route
-      {...rest}
-      render={(props) =>
-        userRoles.includes(STAFF_DESIGNER) ? (
-          <Component {...props} />
-        ) : (
-          <Redirect exact to={`${redirectUrl}`} />
-        )
-      }
-    />
-  );
 
   return (
     <div>
       <Switch>
         <Route exact path={`${BASE_ROUTE}form/:formId`} component={View} />
-        <FormActionRoute
-          path={`${BASE_ROUTE}form/:formId/preview`}
-          component={Preview}
-        />
-        <FormActionRoute
-          path={`${BASE_ROUTE}form/:formId/edit`}
-          component={Edit}
-        />
         <SubmissionRoute
           path={`${BASE_ROUTE}form/:formId/submission`}
           component={Submission}

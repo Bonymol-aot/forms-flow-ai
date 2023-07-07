@@ -45,7 +45,7 @@ RUN if [ $NODE_ENV == "development" ]; then \
 
 
 # Production stage
-FROM nginx:1.21.3-alpine as production-stage
+FROM nginx:1.25.1-alpine as production-stage
 
 # Set label for image
 LABEL Name="formsflow"
@@ -71,4 +71,5 @@ RUN apk add --no-cache bash
 RUN chmod +x /usr/share/nginx/html/config/env.sh
 
 # Start Nginx server with environment setup
-CMD ["/bin/bash", "-c", "/usr/share/nginx/html/config/env.sh && nginx -g \"daemon off;\""]
+CMD ["/bin/bash", "-c", "nginx -g \"daemon off;\""]
+# CMD ["/bin/bash", "-c", "/usr/share/nginx/html/config/env.sh && nginx -g \"daemon off;\""]
