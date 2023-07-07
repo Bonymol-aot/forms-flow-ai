@@ -36,7 +36,7 @@ Mark  items as `Added`, `Changed`, `Fixed`, `Removed`, `Untested Features`, `Upc
 **forms-flow-web**
 
 * Application history is modified to Application status and Request status.
-* Environment variable `ENABLE_APPLICATION_ACCESS_PERMISSION_CHECK` is replaced with `ENABLE_APPLICATION_ACCESS_PERMISSION_CHECK` to enable Role level permission.
+* Environment variable `USER_ACCESS_PERMISSIONS` is replaced with `ENABLE_APPLICATION_ACCESS_PERMISSION_CHECK` to enable Role level permission.
 
 `forms-flow-api`
 
@@ -64,6 +64,7 @@ Mark  items as `Added`, `Changed`, `Fixed`, `Removed`, `Untested Features`, `Upc
      * forms-flow-service (contains all the common functionalties used by micro front-ends like authentication service, storage APIs etc.)
      * forms-flow-theme (contains the common style sheet shared by all micro-front-ends)<br>
         Refer the [forms-flow-ai-micro-front-ends](https://github.com/AOT-Technologies/forms-flow-ai-micro-front-end) repository for further details.
+* Dashboard authorization is moved from designer role to admin user.
 
 
 ## 5.1.1 - 2023-05-18
