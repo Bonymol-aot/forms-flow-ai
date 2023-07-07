@@ -36,7 +36,7 @@ Mark  items as `Added`, `Changed`, `Fixed`, `Removed`, `Untested Features`, `Upc
 **forms-flow-web**
 
 * Application history is modified to Application status and Request status.
-* Environment variable `ENABLE_APPLICATION_ACCESS_PERMISSION_CHECK` is replaced with `ENABLE_APPLICATION_ACCESS_PERMISSION_CHECK` to enable Role level permission.
+* Environment variable `USER_ACCESS_PERMISSIONS` is replaced with `ENABLE_APPLICATION_ACCESS_PERMISSION_CHECK` to enable Role level permission.
 
 `forms-flow-api`
 
