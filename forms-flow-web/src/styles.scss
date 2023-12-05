@@ -202,6 +202,22 @@ i.fa.fa-question-circle.text-muted {
   background-color: #ffd1d1;
 }
 
+.editOrSubmit{
+  color: $blue;
+  cursor: pointer;
+}
+
+.draftEdit{
+  max-width: 900px;
+  margin: auto;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
 .nav-dropdown {
   .dropdown-menu {
     width: 15rem;

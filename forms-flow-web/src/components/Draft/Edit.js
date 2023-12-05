@@ -330,18 +330,7 @@ const View = React.memo((props) => {
             </div>
           ) : (
             <span>
-              <div
-                className=""
-                style={{
-                  maxWidth: "900px",
-                  margin: "auto",
-                  height: "50vh",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
+              <div className="draftEdit">
                 <h3>{t("Form not published")}</h3>
                 <p>{t("You can't submit this form until it is published")}</p>
               </div>
