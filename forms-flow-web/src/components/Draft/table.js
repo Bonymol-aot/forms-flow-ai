@@ -44,7 +44,7 @@ function timeFormatter(cell) {
 const nameFormatter = (cell) => {
   const name = startCase(cell);
   return (
-    <label className="text-truncate w-100" title={name} style={{ maxWidth: "600px" }}>
+    <label className="text-truncate w-100 maxw-600" title={name}>
       {startCase(name)}
     </label>
   );
@@ -167,7 +167,7 @@ const customDropUp = ({ options, currSizePerPage, onSizePerPageChange }) => {
       drop="up"
       variant="secondary"
       title={currSizePerPage}
-      style={{ display: "inline" }}
+      className="d-inline"
     >
       {options.map((option) => (
         <Dropdown.Item

@@ -87,7 +87,7 @@ const SelectFormForDownload = React.memo(({ form, type }) => {
   return (
     <Form.Check>
       <Form.Check.Input
-        style={{ width: "15px", height: "15px" }}
+        className="w-15 h-15"
         aria-label="option"
         checked={isFormChecked}
         onChange={() => updateFormCheckList(!isFormChecked)}

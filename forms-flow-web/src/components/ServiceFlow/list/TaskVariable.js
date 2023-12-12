@@ -17,11 +17,11 @@ const TaskVariable = ({ variables }) => {
           data-placement="top"
           title={taskItem.label}
         >
-          <span style={{ margin: "0px", fontWeight: "bold" }}>
+          <span className="m-0 font-weight-bold">
             {taskItem.label}
           </span>
         </div>
-        <div className="text-truncate " style={{ fontSize: "14px" }}>
+        <div className="text-truncate fs-14">
           <span
             data-toggle="tooltip"
             data-placement="top"
@@ -65,10 +65,7 @@ const TaskVariable = ({ variables }) => {
           }}
         >
           <i
-            className="fa fa-angle-down"
-            style={{
-              transform: `${showMore ? "rotate(180deg)" : "rotate(0deg)"}`,
-            }}
+            className={`fa fa-angle-down ${showMore ? 'rotate-180' : 'rotate-0'}`}
             aria-hidden="true"
           />
         </Row>

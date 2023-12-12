@@ -125,7 +125,7 @@ const DraftTable = () => {
   return (
     <>
      <LoadingOverlay active={isDraftLoading} spinner text={t("Loading...")}>
-      <div style={{ minHeight: "400px" }}>
+     <div className="minh-400">
        
           <table className="table custom-table table-responsive-sm">
             <thead>

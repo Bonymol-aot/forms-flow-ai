@@ -557,8 +557,7 @@ const Edit = React.memo(() => {
 
       <Errors errors={errors} />
       <div
-        className="p-4"
-        style={{ border: "1px solid #c2c0be", borderRadius: "5px" }}
+        className="custom-border-radius p-4 "
       >
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
@@ -695,8 +694,7 @@ const Edit = React.memo(() => {
                             {
                               MULTITENANCY_ENABLED && tenantKey ? <div className="input-group-prepend">
                                 <div
-                                  className="input-group-text"
-                                  style={{ maxWidth: "150px" }}
+                                  className="input-group-text custom-max-width"
                                 >
                                   <span className="text-truncate">{tenantKey}</span>
                                 </div>
@@ -749,8 +747,7 @@ const Edit = React.memo(() => {
                               {
                                 MULTITENANCY_ENABLED && tenantKey ? <div className="input-group-prepend">
                                   <div
-                                    className="input-group-text"
-                                    style={{ maxWidth: "150px" }}
+                                    className="input-group-text custom-max-width"
                                   >
                                     <span className="text-truncate">{tenantKey}</span>
                                   </div>

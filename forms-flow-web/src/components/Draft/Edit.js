@@ -48,6 +48,7 @@ import { setDraftDelete } from "../../actions/draftActions";
 import { setFormStatusLoading } from "../../actions/processActions";
 import { getFormProcesses } from "../../apiManager/services/processServices";
 import { textTruncate } from "../../helper/helper";
+import "./Draft.scss";
 
 const View = React.memo((props) => {
   const { t } = useTranslation();
@@ -265,8 +266,7 @@ const View = React.memo((props) => {
         </div>
         {processData?.status === "active" ? (
           <button
-            className="btn btn-danger mr-2"
-            style={{ width: "8.5em" }}
+            className="btn btn-danger custom-discard mr-2"
             onClick={() => deleteDraft()}
           >
             {t("Discard Draft")}
@@ -289,11 +289,11 @@ const View = React.memo((props) => {
     <>
 
       {t("Are you sure to delete the draft")} 
-      <span style={{ fontWeight: "bold" }}>&nbsp;
+      <span className="fw-bold">&nbsp;
         {textTruncate(14, 12, draftDelete.draftName)}
       </span>&nbsp;
       {t("with ID")} 
-      <span style={{ fontWeight: "bold" }}>&nbsp;
+      <span className="fw-bold">&nbsp;
         {draftDelete.draftId}
       </span> ?
     </>

@@ -76,7 +76,7 @@ const ServiceFlowTaskList = React.memo(() => {
     if ((tasksCount || taskList.length) && selectedFilter) {
       return (
         <>
-          <div style={{minHeight:"67vh"}}>
+          <div className="min-vh-67">
           {taskList.map((task, index) => (
             <div
               className={`clickable shadow border  ${
@@ -91,7 +91,7 @@ const ServiceFlowTaskList = React.memo(() => {
                 </div>
              
               <div className="font-size-16 d-flex justify-content-between">
-                <div className="pr-0" style={{ maxWidth: "65%" }}>
+              <div className="pr-0 maxw-65">
                   <span data-toggle="tooltip" title="Form Name">
                     {
                       getProcessDataObjectFromList(

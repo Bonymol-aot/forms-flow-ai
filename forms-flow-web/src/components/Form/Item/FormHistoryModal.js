@@ -6,26 +6,25 @@ import {
 } from "../../../actions/formActions";
 import Loading from "../../../containers/Loading";
 import { useTranslation } from "react-i18next";
-import { HelperServices} from "@formsflow/service";
+import { HelperServices } from "@formsflow/service";
 
 const FormHistoryModal = ({ historyModal, handleModalChange, gotoEdit }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const [showCount, setShowCount] = useState(3); 
+  const [showCount, setShowCount] = useState(3);
   const formHistory = useSelector((state) => state.formRestore?.formHistory);
   const [sliceFormHistory, setSliceFormHistory] = useState([]);
   const historyRef = useRef(null);
-   
-  useEffect(() => {
-    setSliceFormHistory(formHistory?.slice(0, showCount));
-  },[showCount,formHistory]);
 
   useEffect(() => {
-    historyRef?.current?.lastElementChild.scrollIntoView({
+    setSliceFormHistory(formHistory?.slice(0, showCount));
+  }, [showCount, formHistory]);
+
+  useEffect(() => {
+    historyRef.current.lastElementChild.scrollIntoView({
       behavior: "smooth",
     });
   }, [sliceFormHistory]);
-
 
   const handleShowMore = () => {
     if (showCount + 3 <= formHistory.length) {
@@ -39,7 +38,6 @@ const FormHistoryModal = ({ historyModal, handleModalChange, gotoEdit }) => {
     dispatch(setRestoreFormId(cloneId));
     gotoEdit();
   };
-
 
   return (
     <>
@@ -74,12 +72,12 @@ const FormHistoryModal = ({ historyModal, handleModalChange, gotoEdit }) => {
           <div className="d-flex align-items-start p-3">
             <i className="fa fa-info-circle text-primary mr-2"></i>
             <span className="text-muted h6">
-            {t("Formsflow automatically saves your previous form data. Now you can switch to the previous stage and edit.")}
+              {t("Formsflow automatically saves your previous form data. Now you can switch to the previous stage and edit.")}
             </span>
           </div>
-          {!formHistory ? 
-          <Loading/>
-          : ( sliceFormHistory.length ? (
+          {!formHistory ? (
+            <Loading />
+          ) : sliceFormHistory.length ? (
             <>
               <ul className="form-history-container" ref={historyRef}>
                 {sliceFormHistory.map((history, index) => (
@@ -90,44 +88,45 @@ const FormHistoryModal = ({ historyModal, handleModalChange, gotoEdit }) => {
                         index === 0 ? "active" : ""
                       }`}
                     >
-                      <div style={{ maxWidth: "150px", minWidth: "150px" }}>
-                        <span className="text-muted text-small">
-                          {formHistory.length === 1
-                            ? t("Created By")
-                            : t("Modified By")}
+                      <div className="maxw-150 minw-150"></div>
+                      <span className="text-muted text-small">
+                        {formHistory.length === 1
+                          ? t("Created By")
+                          : t("Modified By")}
+                      </span>
+                      <span className="d-block">{history.createdBy}</span>
+                    </div>
+                    <div>
+                      <span className="text-muted">
+                        {formHistory.length === 1
+                          ? t("Created On")
+                          : t("Modified On")}
+                      </span>
+                      <p className="mb-0">{HelperServices?.getLocalDateAndTime(history.created)}</p>
+                      {formHistory.length > 1 && (
+                        <span className="text-primary">
+                          {history.changeLog?.new_version
+                            ? t(history.changeLog?.version
+                              ? `Version ${history.changeLog.version} created`
+                              : "New version created")
+                            : t(history.changeLog.version
+                              ? `Version ${history.changeLog.version}`
+                              : "")}
                         </span>
-                        <span className="d-block">{history.createdBy}</span>
-                      </div>
-                      <div>
-                        <span className="text-muted">
-                          {formHistory.length === 1
-                            ? t("Created On")
-                            : t("Modified On")}
-                        </span>
-                        <p className="mb-0">{HelperServices?.getLocalDateAndTime(history.created)}</p>
-                        {
-                          formHistory.length > 1 && (
-                            <span className="text-primary">{
-                              history.changeLog?.new_version ? 
-                              t(history.changeLog?.version ? `Version ${history.changeLog.version} created` : "New version created") : 
-                              t(history.changeLog.version ? `Version ${history.changeLog.version}` : "")}
-                              </span>
-                          )
+                      )}
+                    </div>
+                    <div>
+                      <span className="d-block text-muted">{t("Action")}</span>
+                      <button
+                        className="btn btn-outline-primary"
+                        disabled={index === 0}
+                        onClick={() =>
+                          selectHistory(history.changeLog.cloned_form_id)
                         }
-                      </div>
-                      <div>
-                        <span className="d-block text-muted">{t("Action")}</span>
-                        <button
-                          className="btn btn-outline-primary"
-                          disabled={index === 0}
-                          onClick={() =>
-                            selectHistory(history.changeLog.cloned_form_id)
-                          }
-                        >
-                          <i className="fa fa-pencil" aria-hidden="true" />
-                          &nbsp;&nbsp; {t("Revert")}
-                        </button>
-                      </div>
+                      >
+                        <i className="fa fa-pencil" aria-hidden="true" />
+                        &nbsp;&nbsp; {t("Revert")}
+                      </button>
                     </div>
                   </li>
                 ))}
@@ -136,9 +135,7 @@ const FormHistoryModal = ({ historyModal, handleModalChange, gotoEdit }) => {
                 <div className="d-flex justify-content-center">
                   <button
                     className="btn btn-outline-primary"
-                    onClick={() => {
-                      handleShowMore();
-                    }}
+                    onClick={handleShowMore}
                   >
                     {t("Show more")}
                     <i
@@ -151,7 +148,7 @@ const FormHistoryModal = ({ historyModal, handleModalChange, gotoEdit }) => {
             </>
           ) : (
             <p>{t("No histories found")}</p>
-          ))}
+          )}
         </Modal.Body>
       </Modal>
     </>

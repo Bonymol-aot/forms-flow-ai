@@ -44,7 +44,10 @@ const ChartForm = React.memo((props) => {
           <div>
           <div className="d-flex align-items-center">
             <span className="text-primary mr-2" >{t("Form Name")} : </span>
-            <h2 className="text-truncate" style={{ maxWidth: version > 1 ? "500px" : "700px"}}>{formName}</h2>
+            <h2 className={`text-truncate ${version > 1 ? 'max-width-500' : 'max-width-700'}`}>
+  {formName}
+</h2>
+
           </div>
           <p>
             <span className="text-primary" >{t("Latest Version")} :</span>{" "}
@@ -107,14 +110,8 @@ const ChartForm = React.memo((props) => {
                 <div className="d-flex border flex-wrap rounded p-4   ">
               {pieData.map((entry, index) => (
                 <div className=" d-flex align-items-center m-3" key={index}>
-                  <span
-                    className="rounded-circle shadow  mr-2"
-                    style={{
-                      backgroundColor: COLORS[index % COLORS.length],
-                      width: "25px",
-                      height: "25px",
-                    }}
-                  ></span>
+                  <span className="rounded-circle shadow d-inline-block align-middle mr-2 custom-color-size" style={{ backgroundColor: COLORS[index % COLORS.length] }}></span>
+
                   <div className="legent-text">{entry.statusName}</div>
                 </div>
               ))}

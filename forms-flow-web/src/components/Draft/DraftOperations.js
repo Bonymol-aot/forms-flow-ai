@@ -19,7 +19,7 @@ const DraftOperations = ({ row }) => {
   return (
     <>
       <div>
-        <span style={{ marginLeft: "2rem" }}>
+        <span className="ml-8">
           <span>
             <button
               className="btn btn-link text-danger mt-2"

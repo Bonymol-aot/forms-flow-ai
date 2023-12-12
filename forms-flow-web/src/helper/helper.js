@@ -38,18 +38,7 @@ const renderPage = (formStatus, processLoadError) => {
   if (!processLoadError && ((formStatus === "inactive") || !formStatus)) {
     return (
       <span>
-        <div
-          className=""
-          style={{
-            maxWidth: "900px",
-            margin: "auto",
-            height: "50vh",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
+        <div className="custom-container">
           <h3>{<Translation>{(t) => t("Form not published")}</Translation>}</h3>
           <p>{<Translation>{(t) => t("You can't submit this form until it is published")}</Translation>}</p>
         </div>

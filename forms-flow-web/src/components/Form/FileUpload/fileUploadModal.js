@@ -41,7 +41,7 @@ const FileModal = React.memo(({ modalOpen = false, onClose, forms, }) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div style={{ paddingBottom: "7px", color: "#450ccb", fontWeight: "bold" }}>
+        <div className="pb-7 text-primary fw-bold">
             {`${formUploadCounter} of ${formUploadList.length} ${formUploadList.length > 1
               ? t("forms uploaded")
               : t("form uploaded")
@@ -59,15 +59,16 @@ const FileModal = React.memo(({ modalOpen = false, onClose, forms, }) => {
             </span>}
           </div>
           {formUploadList.length ? (
-            <div className="progress" style={{ height: "5px", marginTop: "11px" }}>
+            <div className="progress custom-progress-height">              
               <div
-                className="progress-bar"
+                className={`progress-bar ${formsUploaded === 100 ? 'bg-primary' : ''}`}
                 role="progressbar"
                 aria-valuenow={formsUploaded}
                 aria-label="upload-status"
                 aria-valuemax={`${formsUploaded}`}
-                style={{ width: `${formsUploaded === 100 ? "100%" : `${formsUploaded}%`}`, backgroundColor: `${formsUploaded === 100 ? "#4d53fa" : ""}` }}
+                style={{ width: `${formsUploaded === 100 ? "100%" : `${formsUploaded}%`}` }}
               ></div>
+
             </div>
           ) : (
             <div>
@@ -77,10 +78,12 @@ const FileModal = React.memo(({ modalOpen = false, onClose, forms, }) => {
         </Modal.Body>
         <Modal.Footer style={{ justifyContent: `${noAccess ? "space-between" : ''}` }}>
           {noAccess && <span className="fileupload-fail">{t("Access restricted by its designer..!")}</span>}
-          <Button style={{ width: "20%" }} type="button" className="btn btn-default" onClick={() => {
-            dispatch(DesignerAccessDenied(false));
-            onClose();
-          }}>
+          <Button type="button"
+            className="btn btn-default w-20"
+            onClick={() => {
+              dispatch(DesignerAccessDenied(false));
+              onClose();
+            }}>
             <Translation>{(t) => t("Close")}</Translation>
           </Button>
         </Modal.Footer>

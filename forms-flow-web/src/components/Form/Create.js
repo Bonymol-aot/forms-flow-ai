@@ -341,8 +341,7 @@ const Create = React.memo(() => {
                           {
                             MULTITENANCY_ENABLED && tenantKey ? <div className="input-group-prepend">
                               <div
-                                className="input-group-text"
-                                style={{ maxWidth: "150px" }}
+                                className="input-group-text maxw-150"
                               >
                                 <span className="text-truncate">{tenantKey}</span>
                               </div>
@@ -395,8 +394,7 @@ const Create = React.memo(() => {
                             {
                               MULTITENANCY_ENABLED && tenantKey ? <div className="input-group-prepend">
                                 <div
-                                  className="input-group-text"
-                                  style={{ maxWidth: "150px" }}
+                                  className="input-group-text max-width-150"
                                 >
                                   <span className="text-truncate">{tenantKey}</span>
                                 </div>

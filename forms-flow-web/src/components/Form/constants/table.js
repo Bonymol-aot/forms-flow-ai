@@ -46,11 +46,10 @@ export const userColumns = () => [
 const customDropUp = ({ options, currSizePerPage, onSizePerPageChange }) => {
   return (
     <DropdownButton
-    className="ml-2"
+    className="ml-2 d-inline"
       drop="up"
       variant="secondary"
       title={currSizePerPage}
-      style={{ display: "inline" }}
     >
       {options.map((option) => (
         <Dropdown.Item

@@ -207,6 +207,10 @@ i.fa.fa-question-circle.text-muted {
   cursor: pointer;
 }
 
+.click-element {
+  cursor: pointer;
+}
+
 .draftEdit{
   max-width: 900px;
   margin: auto;
@@ -216,6 +220,57 @@ i.fa.fa-question-circle.text-muted {
   align-items: center;
   justify-content: center;
 
+}
+
+.dashboardSort{
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.dashboardHeight{
+  min-height: 60vh;
+}
+
+.draftLabel{
+  max-width: 600px;
+}
+
+
+.dateFilter{
+  padding: 0.375rem 0.3rem;
+}
+
+.custom-border-radius {
+  border: 1px solid #c2c0be;
+  border-radius: 5px;
+}
+
+
+.pb-7 {
+  padding-bottom: 7px;
+}
+
+.custom-border {
+  border: 1px solid #000000;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.rotate-0 {
+  transform: rotate(0deg);
+}
+
+
+.custom-container {
+  max-width: 900px;
+  margin: auto;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-dropdown {
@@ -673,6 +728,14 @@ div[disabled] {
 
 .form_check {
   margin-bottom: 20px;
+}
+
+.max-width-500 {
+  max-width: 500px;
+}
+
+.max-width-700 {
+  max-width: 700px;
 }
 
 a {

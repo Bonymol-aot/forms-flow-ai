@@ -314,7 +314,7 @@ if (reviewerSelectedOption === "Specific Reviewers") {
                     </label>
                   </div>
                   <hr />
-                  <div className="mt-2" style={{ height: "auto" }}>
+                  <div className="mt-2 h-auto">
                     <span
                       className="font-weight-bold"
                       title={t("Applicable for Designer Roled Users only.")}

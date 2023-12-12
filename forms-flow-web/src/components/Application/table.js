@@ -240,10 +240,10 @@ export const customDropUp = ({
 }) => {
   return (
     <DropdownButton
+      className="d-inline"
       drop="up"
       variant="secondary"
       title={currSizePerPage}
-      style={{ display: "inline" }}
     >
       {options.map((option) => (
         <Dropdown.Item

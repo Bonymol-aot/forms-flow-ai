@@ -220,6 +220,7 @@ const Dashboard = React.memo(() => {
           <div className="dashboard-container d-flex flex-wrap justify-content-between">
             <div className="input-group col-12 col-md-4 px-0">
               <FormControl
+                className="textInput"
                 type="search"
                 title="Search"
                 ref={searchInputBox}
@@ -232,14 +233,14 @@ const Dashboard = React.memo(() => {
                 autoComplete="off"
                 value={searchTextInput}
                 placeholder={t("Search...")}
-                style={{ backgroundColor: "#ffff" }}
               />
               {showClearButton && (
                 <InputGroup.Append
+                  className="click-element"
                   onClick={() => onClear()}
-                  style={{ cursor: "pointer" }}
                 >
-                  <InputGroup.Text style={{ backgroundColor: "#ffff" }}>
+                  <InputGroup.Text 
+                  className="textInput">
                     <i className="fa fa-times"></i>
                   </InputGroup.Text>
                 </InputGroup.Append>
@@ -248,9 +249,9 @@ const Dashboard = React.memo(() => {
               <InputGroup.Append
                 title={t("Click to search")}
                 onClick={() => handleSearch()}
-                style={{ cursor: "pointer" }}
+                className="click-element"
               >
-                <InputGroup.Text style={{ backgroundColor: "#ffff" }}>
+                <InputGroup.Text className="textInput">
                   <i className="fa fa-search"></i>
                 </InputGroup.Text>
               </InputGroup.Append>
@@ -261,8 +262,7 @@ const Dashboard = React.memo(() => {
                 <FormControl
                   as="select"
                   onChange={(e) => onChangeInput(e.target.value)}
-                  className="form-control"
-                  style={{ padding: ".375rem .3rem" }}
+                  className="form-control dateFilter"
                   title={t("Choose any")}
                   aria-label="Select date type"
                 >
@@ -284,7 +284,7 @@ const Dashboard = React.memo(() => {
                 yearAriaLabel="Select the year"
                 nativeInputAriaLabel="Date"
               />
-              <div className="ml-3">
+              <div className="ml-3 dashboardSort">
                 {isAscending ? (
                   <i
                     className="fa fa-sort-alpha-asc"
@@ -293,10 +293,6 @@ const Dashboard = React.memo(() => {
                     }}
                     data-toggle="tooltip"
                     title={t("Descending")}
-                    style={{
-                      cursor: "pointer",
-                      fontSize: "20px",
-                    }}
                   ></i>
                 ) : (
                   <i
@@ -306,17 +302,13 @@ const Dashboard = React.memo(() => {
                     }}
                     data-toggle="tooltip"
                     title={t("Ascending")}
-                    style={{
-                      cursor: "pointer",
-                      fontSize: "20px",
-                    }}
                   ></i>
                 )}
               </div>
             </div>
           </div>
 
-          <div className="dashboard d-flex" style={{ minHeight: "60vh" }}>
+          <div className="dashboard d-flex flex-grow-1">
             {submissionsList.length ? (
               <div className="col-12 px-0">
                 {!metricsDateRangeLoader && (
