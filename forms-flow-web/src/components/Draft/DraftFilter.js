@@ -84,8 +84,7 @@ const DraftFilter = ({ setDisplayFilter, filterParams, setFilterParams }) => {
 
   return (
     <div
-      className="Filter-listview "
-      style={{ minWidth: "500px" }}
+      className="Filter-listview submission-draft-filter"
       ref={createSearchNode}
     >
  

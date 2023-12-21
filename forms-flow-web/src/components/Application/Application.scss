@@ -23,6 +23,18 @@
     font-size: 14px;
 }
 
+.application-details{
+    font-weight: 500px;
+}
+
+.draft-table{
+    min-height: 400px;
+}
+
+.delete-draft{
+    width: 8.5rem;
+}
+
 .filter-sort-bar {
     margin-bottom: 1rem;
     .filter-list-view {
@@ -31,6 +43,9 @@
         background-color: white;
         top: 31px;;
         min-width: 180px;
+    }
+    .submission-draft-filter{
+        min-width: 500px;
     }
     .sort-container{
         min-width: 250px;

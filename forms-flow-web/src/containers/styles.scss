@@ -330,6 +330,13 @@ margin-right: 1rem;
   cursor: pointer;
 }
 
+.custom-svg{
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+  display: inline-block;
+}
+
 .head-item {
   color: #ABABAB;
   cursor: pointer;
@@ -353,6 +360,10 @@ margin-right: 1rem;
     font-weight: bold;
     font-size:26px;
     display: flex;
+}
+
+.application-head-icon{
+  margin-top: 5px;
 }
 .application-head-details
 {

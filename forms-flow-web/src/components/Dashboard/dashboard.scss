@@ -2,6 +2,7 @@
 
 .dashboard {
    margin-top: 10px;
+   min-height: 60vh;
 
   & .line-hr {
     border-top: 1px solid $light-blue;
@@ -189,6 +190,21 @@
   width: 150px;
   height: 45px;
   cursor: pointer;
+}
+
+.input-pointer{
+  cursor: pointer;
+
+}
+
+.pie{
+  width: 25px;
+  height: 25px;
+}
+
+.dashboard-pointer-sort{
+  cursor: pointer;
+  font-size: 20px;
 }
 
 .no_submission_main {

@@ -1,4 +1,5 @@
 import { Translation } from "react-i18next";
+import "./helper.scss";
 
 const replaceUrl = (URL, key, value) => {
   return URL.replace(key, value);
@@ -39,16 +40,7 @@ const renderPage = (formStatus, processLoadError) => {
     return (
       <span>
         <div
-          className=""
-          style={{
-            maxWidth: "900px",
-            margin: "auto",
-            height: "50vh",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
+          className="form-inactive"
         >
           <h3>{<Translation>{(t) => t("Form not published")}</Translation>}</h3>
           <p>{<Translation>{(t) => t("You can't submit this form until it is published")}</Translation>}</p>

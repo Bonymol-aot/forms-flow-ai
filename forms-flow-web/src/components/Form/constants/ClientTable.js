@@ -106,8 +106,7 @@ function ClientTable() {
         <tr>
           <td colSpan="3">
             <div
-              className="d-flex align-items-center justify-content-center flex-column w-100"
-              style={{ minHeight: "300px" }}
+              className="d-flex align-items-center justify-content-center flex-column no-data w-100"
             >
               <h3>{t("No forms found")}</h3>
               <p>{t("Please change the selected filters to view Forms")}</p>
