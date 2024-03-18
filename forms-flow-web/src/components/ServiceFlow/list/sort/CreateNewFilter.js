@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
+import API from "../../../../apiManager/endpoints";
+import { REVIEWER_GROUP } from "../../../../constants/userContants";
 import {
   deleteFilters,
   editFilters,
@@ -34,9 +36,15 @@ import {
 } from "../../../../actions/authorizationActions";
 import { Badge, ListGroup, OverlayTrigger, Popover } from "react-bootstrap";
 // import { fetchUsers } from "../../../../apiManager/services/userservices";
-import { trimFirstSlash } from "../../constants/taskConstants";
+// import { trimFirstSlash } from "../../constants/taskConstants";
 import { cloneDeep } from "lodash";
 import { MULTITENANCY_ENABLED } from "../../../../constants/constants";
+// import Dropdown from "react-bootstrap/Dropdown";
+// import { ADMIN_USER } from "../../../../constants/constants";
+// import { UserSearchFilterTypes } from "../../constants/userSearchFilterTypes";
+import Select from "react-select";
+
+
 export default function CreateNewFilterDrawer({
   selectedFilterData,
   openFilterDrawer,
@@ -44,12 +52,13 @@ export default function CreateNewFilterDrawer({
   setFilterSelectedForEdit,
 }) {
   const dispatch = useDispatch();
+  
   const [filterName, setFilterName] = useState("");
   const [showUndefinedVariable, setShowUndefinedVariable] = useState(false);
   const [inputVisibility, setInputVisibility] = useState({});
   const [definitionKeyId, setDefinitionKeyId] = useState("");
   const [candidateGroup, setCandidateGroup] = useState([]);
-  const [assignee, setAssignee] = useState("");
+  const [assignee, setAssignee] = useState([]);
   const [includeAssignedTasks, setIncludeAssignedTasks] = useState(false);
   const [
     isTasksForCurrentUserGroupsEnabled,
@@ -60,6 +69,8 @@ export default function CreateNewFilterDrawer({
   const [identifierId, setIdentifierId] = useState("");
   const [selectUserGroupIcon, setSelectUserGroupIcon] = useState("");
   const [specificUserGroup, setSpecificUserGroup] = useState("");
+  
+
   const firstResult = useSelector((state) => state.bpmTasks.firstResult);
   const tenantKey = useSelector((state) => state.tenants?.tenantId);
   const userGroups = useSelector(
@@ -68,6 +79,10 @@ export default function CreateNewFilterDrawer({
   const userName = useSelector(
     (state) => state.user?.userDetail?.preferred_username
   );
+  const candidateGroups = useSelector((state) => state.user?.userDetail?.groups || []);
+  const getReviewerUserListApi = `${API.GET_API_USER_LIST}?memberOfGroup=${REVIEWER_GROUP}`;
+  const [reviewerUsers, setReviewerUsers] = useState([]);
+
   const sortParams = useSelector(
     (state) => state.bpmTasks.filterListSortParams
   );
@@ -80,6 +95,7 @@ export default function CreateNewFilterDrawer({
   const [inputValues, setInputValues] = useState([{ name: "", label: "" }]);
   const [overlayGroupShow, setOverlayGroupShow] = useState(false);
   const [overlayUserShow, setOverlayUserShow] = useState(false);
+
   const [overlayCandidateGroupShow, setOverlayCandidateGroupShow] =
     useState(false);
 
@@ -114,6 +130,7 @@ export default function CreateNewFilterDrawer({
     };
     dispatch(setFilterListParams(cloneDeep(selectedBPMFilterParams)));
   };
+  
 
   const customTrim = (inputString) => {
     // Remove '%' symbol from the start
@@ -238,6 +255,31 @@ export default function CreateNewFilterDrawer({
       }
     });
   }, [inputValues]);
+
+  useEffect(() => {
+    fetch(getReviewerUserListApi)
+      .then(response => response.json())
+      .then(responseData => {
+        if (Array.isArray(responseData.data)) {
+          const options = responseData.data.map(user => ({
+            value: user.username,
+            label: `${user.firstName} ${user.lastName}`
+          }));
+          setReviewerUsers(options);
+        } else {
+          console.error('Data fetched is not an array:', responseData);
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching reviewer user list:', error);
+      });
+  }, [getReviewerUserListApi]);
+
+
+  
+  
+  
+  
 
   const successCallBack = (resData) => {
     dispatch(
@@ -458,12 +500,12 @@ export default function CreateNewFilterDrawer({
     setOpenFilterDrawer(!openFilterDrawer);
   };
 
-  const handleCandidateGroup = (data) => {
-    data = trimFirstSlash(data);
-    setOverlayCandidateGroupShow(!overlayCandidateGroupShow);
-    setCandidateGroup(data);
-  };
-
+  // const handleCandidateGroup = (data) => {
+  //   data = trimFirstSlash(data);
+  //   setOverlayCandidateGroupShow(!overlayCandidateGroupShow);
+  //   setCandidateGroup(data);
+  // };
+  
   const list = () => (
     <div className="filter-list" role="presentation">
       <List>
@@ -555,83 +597,39 @@ export default function CreateNewFilterDrawer({
             title={t("Definition Key")}
           />
         )}
-        <h5 className="pt-2">
-          <Translation>{(t) => t("Candidate Group")}</Translation>
-        </h5>
+        
+<List>
+  <h5 className="fw-bold">
+    <Translation>{(t) => t("Candidate Group")}</Translation>
+  </h5>
+</List>
+<Select
+  onChange={(selectedOption) => setCandidateGroup(selectedOption ? selectedOption.value : null)}
+  value={candidateGroup ? { value: candidateGroup, label: candidateGroup } : null}
+  isClearable={true}
+  placeholder="Select Candidate Group"
+  options={candidateGroups.map(group => ({ value: group, label: group }))}
+/>
 
-        <OverlayTrigger
-          placement="right"
-          trigger="click"
-          rootClose={true}
-          show={overlayCandidateGroupShow}
-          overlay={
-            <Popover className="z-index">
-              <div className="poper">
-                <ListGroup>
-                  {userGroups?.length > 0 &&
-                    userGroups?.map((e, i) => (
-                      <ListGroup.Item
-                        key={i}
-                        as="button"
-                        onClick={() => handleCandidateGroup(e.name)}
-                      >
-                        {e.name}
-                      </ListGroup.Item>
-                    ))}
-                </ListGroup>
-              </div>
-            </Popover>
-          }
-        >
-          <span
-            onClick={() => handleSpanClick(2)}
-            className="px-1 py-1 cursor-pointer text-decoration-underline truncate-size"
-          >
-            <i className="fa fa-plus-circle mr-6"/>
-            <Translation>{(t) => t("Add Value")}</Translation>
-          </span>
-        </OverlayTrigger>
-        {candidateGroup && (
-          <div className="d-flex">
-            <Badge
-              pill
-              variant="outlined"
-              className="d-flex align-items-center badge me-2 mt-2"
-            >
-              {candidateGroup}
-              <div
-                className="badge-deleteIcon ms-2"
-                onClick={() => {
-                  setCandidateGroup(null);
-                  setIncludeAssignedTasks(false);
-                }}
-              >
-                &times;
-              </div>
-            </Badge>
-          </div>
-        )}
-        <h5 className="pt-2">
+    <List>
+    <h5 className="pt-2 fw-bold">
           <Translation>{(t) => t("Assignee")}</Translation>
-        </h5>
-        {!assignee && (
-  <span
-    className="px-1 py-1 cursor-pointer text-decoration-underline truncate-size"
-    onClick={() => handleSpanClick(3)}
-  >
-    <i className="fa fa-plus-circle mr-6" />
-    <Translation>{(t) => t("Add Value")}</Translation>
-  </span>
-)}
-        {(inputVisibility[3] || assignee) && (
-          <input
-            type="text"
-            className="criteria-add-value-inputbox"
-            value={assignee}
-            onChange={(e) => setAssignee(e.target.value)}
-            title={t("Assignee")}
-          />
-        )}
+       </h5>
+       </List> 
+        
+  
+<Select
+  onChange={(selectedOption) => setAssignee(selectedOption ? selectedOption.value : null)}
+  value={assignee ? { value: assignee, label: assignee } : null}
+  isClearable={true}
+  placeholder="Select Assignee"
+  options={reviewerUsers.map(user => ({
+    value: user.id,
+    label: `${user.firstName} ${user.lastName}`
+  }))}
+/>
+
+
 
         {candidateGroup?.length ? (
           <div className="d-flex align-items-center input-container"
