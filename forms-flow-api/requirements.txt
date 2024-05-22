@@ -50,7 +50,7 @@ python-dotenv==1.0.0
 python-jose==3.3.0
 pytz==2023.3.post1
 referencing==0.30.2
-requests==2.31.0
+requests==2.32.0
 rpds-py==0.10.4
 rsa==4.9
 selenium-wire==5.1.0
