@@ -17,3 +17,4 @@ markupsafe
 PyJWT
 selenium
 selenium-wire
+zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
