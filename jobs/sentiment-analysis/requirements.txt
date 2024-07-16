@@ -65,3 +65,4 @@ transformers==4.30.2
 typing_extensions==4.6.3
 urllib3==2.0.3
 wasabi==0.10.1
+setuptools>=70.0.0 # not directly required, pinned by Snyk to avoid a vulnerability
