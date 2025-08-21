@@ -27,10 +27,10 @@
         <failOnMissingWebXml>false</failOnMissingWebXml>
 
         <!-- versions -->
-        <version.camundaKeycloak>7.18.0</version.camundaKeycloak>
+        <version.camundaKeycloak>7.21.0</version.camundaKeycloak>
         <version.camunda>7.18.0</version.camunda><!-- 7.17.0 - 7.18.0 -->
         <version.camundaConnect>1.5.4</version.camundaConnect><!-- 1.5.4 -->
-        <version.camundaMail>1.5.0</version.camundaMail><!-- 1.5.0 -->
+        <version.camundaMail>7.20.0</version.camundaMail><!-- 1.5.0 -->
         <version.springBoot>2.7.12</version.springBoot><!-- 2.6.6 - 2.7.12 -->
         <version.springSecurityOauth2>2.6.7</version.springSecurityOauth2><!--
 			2.6.6 - 2.6.7 -->
@@ -297,25 +297,25 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-websocket</artifactId>
-            <version>5.3.20</version>
+            <version>6.2.10</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-messaging</artifactId>
-            <version>5.3.20</version>
+            <version>6.2.10</version>
         </dependency>
 
         <dependency>
             <groupId>org.graalvm.js</groupId>
             <artifactId>js-scriptengine</artifactId>
-            <version>22.3.2</version>
+            <version>23.1.0</version>
         </dependency>
 
         <dependency>
             <groupId>org.graalvm.js</groupId>
             <artifactId>js</artifactId>
-            <version>22.3.2</version>
+            <version>24.1.0</version>
         </dependency>
 
         <dependency>
