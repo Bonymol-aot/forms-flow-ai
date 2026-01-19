@@ -11,7 +11,7 @@ PyJWT==2.8.0
 PySocks==1.7.1
 SQLAlchemy-Utils==0.41.1
 SQLAlchemy==2.0.21
-Werkzeug==3.0.0
+Werkzeug==3.1.5
 alembic==1.12.0
 aniso8601==9.0.1
 attrs==23.1.0
@@ -44,7 +44,7 @@ outcome==1.2.0
 packaging==23.2
 psycopg2-binary==2.9.9
 pyOpenSSL==23.2.0
-pyasn1==0.5.0
+pyasn1==0.6.2
 pycparser==2.21
 pyparsing==3.1.1
 python-dotenv==1.0.0
@@ -62,6 +62,6 @@ sortedcontainers==2.4.0
 trio-websocket==0.11.1
 trio==0.22.2
 typing_extensions==4.8.0
-urllib3==2.0.6
+urllib3==2.6.3
 wsproto==1.2.0
 zstandard==0.21.0
