@@ -42,7 +42,7 @@ preshed==3.0.8
 protobuf==3.20.3
 psycopg2-binary==2.9.6
 psycopg2==2.9.6
-pyasn1==0.5.0
+pyasn1==0.6.2
 pymssql==2.2.7
 pyrsistent==0.19.3
 python-dotenv==1.0.0
